@@ -16,7 +16,7 @@ sls deploy -v
 ``xxxxxxxx`` = your api endpoint
 
 ```
-while :; do   curl --connect-timeout 60 --max-time 120 -sS https://xxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/dev/time  -w ",\t%{http_code},%{time_total},%{ti me_namelookup},%{time_connect},%{time_pretransfer},%{time_starttransfer}\n" | awk '{print strftime("%y-%m-%d %H:%M:%S"), $0}'; done
+while :; do curl --connect-timeout 60 --max-time 120 -sS https://xxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/dev/time  -w ",\t%{http_code},%{time_total},%{ti me_namelookup},%{time_connect},%{time_pretransfer},%{time_starttransfer}\n" | awk '{print strftime("%y-%m-%d %H:%M:%S"), $0}'; done
 ```
 
 ## Result
