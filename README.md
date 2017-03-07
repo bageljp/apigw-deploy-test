@@ -19,6 +19,19 @@ sls deploy -v
 while :; do curl --connect-timeout 60 --max-time 120 -sS https://xxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/dev/time  -w ",\t%{http_code},%{time_total},%{ti me_namelookup},%{time_connect},%{time_pretransfer},%{time_starttransfer}\n" | awk '{print strftime("%y-%m-%d %H:%M:%S"), $0}'; done
 ```
 
+上記コマンドを実行しながら以下をテスト。
+
+* Lambdaのコードを更新
+* LambdaのVersion / Aliasを変更
+* API Gatewayをデプロイ
+* API GatewayのDeployment Historyから別のデプロイをApply
+* sls経由でデプロイ
+```
+sls deploy -v
+# or
+sls deploy -f getTimestamp -v
+```
+
 ## Result
 
 既存通信は切れなかった
